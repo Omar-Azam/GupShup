@@ -1,0 +1,52 @@
+/* a{
+    color: red !important;
+} */
+
+.heading {
+  text-align: center;
+}
+
+.error {
+  color: red;
+}
+
+.questions {
+  border: 0.15vw solid grey;
+  border-radius: 0.5vw;
+  font-weight: bold;
+}
+
+.category {
+  border: 0.15vw solid grey;
+  border-radius: 0.5vw;
+  font-weight: bold;
+  text-align: center;
+}
+
+.category-box {
+  margin-left: 3vw;
+}
+
+.category-active {
+  border: 0.15vw solid dodgerblue;
+  background-color: dodgerblue;
+}
+
+.category-active a{
+    color: white;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.replies {
+  border-bottom: 1px solid grey;
+}
+
+.text-wrap {
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
