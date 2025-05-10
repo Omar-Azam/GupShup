@@ -22,7 +22,7 @@
     } else{
         include('./client/questions.php');
     }
-    
+
     ?>
 </body>
 </html>
