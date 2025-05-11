@@ -15,6 +15,16 @@ if (!isset($_GET['login'])) {
     unset($_SESSION['login_email']);
 }
 
+if (!isset($_GET['ask'])) {
+    unset($_SESSION['title']);
+    unset($_SESSION['description']);
+    unset($_SESSION['category_id']);
+}
+
+if (!isset($_GET['ques_id'])) {
+    unset($_SESSION['reply']);
+}
+
 if (isset($_POST['signup'])) {
 
     if (empty($_POST['name'])) {
@@ -207,19 +217,21 @@ if (isset($_POST['signup'])) {
         $description = trim($_SESSION['description']);
         $user_id = $_SESSION['user']['id'];
         $category_id = trim($_SESSION['category_id']);
-    
-    
+
+
         $question = $conn->prepare("INSERT INTO questions (title, description, user_id, category_id)VALUES (?, ?, ?, ?)");
         $question->bind_param("ssii", $title, $description, $user_id, $category_id);
         $result = $question->execute();
-    
+
         if ($result) {
+            unset($_SESSION['title']);
+            unset($_SESSION['description']);
+            unset($_SESSION['category_id']);
             header("Location: /omar/gupshup/");
         }
-    } else{
+    } else {
         header("Location: /omar/gupshup/?ask=true");
     }
-
 } elseif (isset($_POST['reply'])) {
 
     if (isset($_SESSION['user']['name'])) {
@@ -231,23 +243,23 @@ if (isset($_POST['signup'])) {
             $_SESSION['reply'] = htmlspecialchars($_POST['replies']);
         }
 
-        if(!isset($_SESSION['reply_error'])){
+        if (!isset($_SESSION['reply_error'])) {
             $reply = trim($_SESSION['reply']);
             $question_id = htmlspecialchars(trim($_POST['question_id']));
             $user_id = $_SESSION['user']['id'];
-    
+
             $replies = $conn->prepare("INSERT INTO replies (replies, question_id, user_id)VALUES (?, ?, ?)");
             $replies->bind_param("sii", $reply, $question_id, $user_id);
             $result = $replies->execute();
-    
+
             if ($result) {
+                unset($_SESSION['reply']);
                 header("Location: /omar/gupshup/?ques_id=$question_id");
             }
-        } else{
+        } else {
             $question_id = htmlspecialchars(trim($_POST['question_id']));
             header("Location: /omar/gupshup/?ques_id=$question_id");
         }
-
     } else {
         header("Location: /omar/gupshup/?login=true");
     }
