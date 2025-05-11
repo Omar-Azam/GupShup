@@ -23,6 +23,16 @@
   text-align: center;
 }
 
+.category:hover{
+    background-color: dodgerblue;
+    border: 0.15vw solid dodgerblue;
+    transition: all .3s;
+}
+
+.category:hover a{
+    color: white;
+}
+
 .category-box {
   margin-left: 3vw;
 }
@@ -32,14 +42,20 @@
   background-color: dodgerblue;
 }
 
+.category a {
+  text-decoration: none;
+  color: black;
+}
+
+.questions a{
+    text-decoration: none;
+    color: black;
+}
+
 .category-active a{
     color: white;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
 
 .replies {
   border-bottom: 1px solid grey;

@@ -2,8 +2,13 @@
     <form action="./server/requests.php" method="post">
         <div class="mb-3 mt-3">
             <input type="hidden" name="question_id" value="<?php echo $ques_id; ?>">
-            <label for="reply" class="form-label">Reply: </label>
-            <textarea class="form-control" id="replies" name="replies" rows="3" placeholder="Write your reply!"></textarea>
+            <label for="reply" class="form-label">Reply:
+                <?php
+                error("reply_error", 5000);
+                ?>
+            </label>
+            <!-- <textarea class="form-control" id="replies" name="replies" rows="3" placeholder="Write your reply!"></textarea> -->
+            <input type="text" class="form-control" id="replies" name="replies" placeholder="Write your reply!">
         </div>
         <button type="submit" name="reply" class="btn btn-primary">Reply</button>
     </form>
