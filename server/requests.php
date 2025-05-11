@@ -224,11 +224,11 @@ if (isset($_POST['signup'])) {
 
     if (isset($_SESSION['user']['name'])) {
 
-        if (empty($_POST['reply'])) {
+        if (empty($_POST['replies'])) {
             $_SESSION['reply_error'] = "*Please write something!";
         } else {
             unset($_SESSION['reply_error']);
-            $_SESSION['reply'] = htmlspecialchars($_POST['reply']);
+            $_SESSION['reply'] = htmlspecialchars($_POST['replies']);
         }
 
         if(!isset($_SESSION['reply_error'])){
